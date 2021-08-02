@@ -1,0 +1,7 @@
+.description {
+  position: relative;
+  height: calc(1.75rem * 3);
+  max-height: calc(1.75rem * 3);
+  overflow: hidden;
+  padding-right: 1rem;
+}
