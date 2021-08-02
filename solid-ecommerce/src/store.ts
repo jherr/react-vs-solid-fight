@@ -1,11 +1,26 @@
 import { createSignal, createResource } from "solid-js";
+import { createMutable } from "solid-js/store";
 import { Product } from "./product";
 
-export const [cart, setCart] = createSignal<Product[]>([]);
-
-export const addToCart = (product: Product) => setCart(cart().concat(product));
-
-export const clearCart = () => setCart([]);
+export const cart = createMutable({
+  products: JSON.parse(
+    window.localStorage.getItem("cart") ?? "[]"
+  ) as Product[],
+  get total() {
+    return this.products.reduce((total, product) => total + product.price, 0);
+  },
+  get count() {
+    return this.products.length;
+  },
+  addProduct(product) {
+    this.products.push(product);
+    window.localStorage.setItem("cart", JSON.stringify(this.products));
+  },
+  clear() {
+    this.products = [];
+    window.localStorage.setItem("cart", JSON.stringify(this.products));
+  },
+});
 
 export const [search, setSearch] = createSignal("");
 

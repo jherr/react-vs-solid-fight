@@ -1,7 +1,7 @@
 import { createMemo, Show, Component } from "solid-js";
 import { useParams } from "solid-app-router";
 
-import { products, addToCart } from "../store";
+import { products, cart } from "../store";
 
 const ProductDetail: Component = () => {
   const params = useParams();
@@ -40,7 +40,7 @@ const ProductDetail: Component = () => {
                 <button
                   onClick={(evt) => {
                     evt.stopPropagation();
-                    addToCart(product());
+                    cart.addProduct(product());
                   }}
                   className="text-2xl px-8 py-1 font-bold bg-blue-800 text-white rounded-full"
                 >
