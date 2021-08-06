@@ -1,4 +1,4 @@
-import { Component, createMemo, For, createEffect } from "solid-js";
+import { Component, For, createEffect } from "solid-js";
 import { Link, useNavigate, useLocation } from "solid-app-router";
 
 import { cart, search, setSearch } from "../store";
